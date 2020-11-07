@@ -6,20 +6,20 @@ The application exposes 2 main APIs:
 ```GET /v1/report/<user>?fromDate=<yyyy-MM-dd>&toDate=<yyyy-MM-dd>```<BR>
 The report is returned in a Json format.
 Sample:
-```
+```json
 {
-  report: {
-    2020-10-09: {
-      user: "bob",
-      date: "2020-10-09",
-      fromTime: "10:30:00",
-      toTime: "15:00:00"
+  "report": {
+    "2020-10-09": {
+      "user": "bob",
+      "date": "2020-10-09",
+      "fromTime": "10:30:00",
+      "toTime": "15:00:00"
     },
-    2020-10-11: {
-      user: "bob",
-      date: "2020-10-11",
-      fromTime: "07:30:00",
-      toTime: null
+    "2020-10-11": {
+      "user": "bob",
+      "date": "2020-10-11",
+      "fromTime": "07:30:00",
+      "toTime": null
     }
   }
 }
