@@ -6,7 +6,7 @@ The application exposes 2 main APIs:
 ```GET /v1/report/<user>?fromDate=<yyyy-MM-dd>&toDate=<yyyy-MM-dd>```<BR>
 The report is returned in a Json format.
 Sample:
-```json
+```
 {
   report: {
     2020-10-09: {
@@ -76,7 +76,7 @@ It uses the underlying DAO layer in order to fetch and save data.
 * `HoursReportServiceImplTest` is a unit test checking inside validations and behavior.
 ### Validator
 * `HoursReportValidator` interface and it's implementation in `HoursReportValidatorImpl` are used to validate the input for fetching the report.
-* `HoursReportValidatorImpl` is a unit test for the validator.
+* `HoursReportValidatorImplTest` is a unit test for the validator.
 ### DAO
 * `WorkingHoursDao` and it's implementation in `WorkingHoursDaoImpl` are used for running the queries to get hours reports and add/update new reports.
 * `WorkingHoursDaoImplIntegrationTest` is a `SpringBootTest` using a setup script for the test data, which verifies the get and upsert queries behavior.
