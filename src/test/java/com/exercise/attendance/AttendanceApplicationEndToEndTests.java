@@ -43,9 +43,10 @@ class AttendanceApplicationEndToEndTests {
     @Test
     void shouldUpdateReportWhenEntryIsAdded() {
         ResponseEntity<Object> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/v1/report/bob", ActivityType.ENTRY, Object.class);
+        LocalDate today = LocalDate.now();
         assertThat(responseEntity.getStatusCode(), is(HttpStatus.CREATED));
-        String response = restTemplate.getForObject("http://localhost:" + port + "/v1/report/bob?fromDate=2020-10-08&toDate=" + LocalDate.now(), String.class);
-        String expectedReportJsonStart = "{\"report\":{\"2020-10-09\":{\"user\":\"bob\",\"date\":\"2020-10-09\",\"fromTime\":\"10:30:00\",\"toTime\":\"15:00:00\"},\"2020-10-11\":{\"user\":\"bob\",\"date\":\"2020-10-11\",\"fromTime\":\"07:30:00\",\"toTime\":null},\"2020-11-07\":{\"user\":\"bob\",\"date\":\"2020-11-07\",\"fromTime\":";
+        String response = restTemplate.getForObject("http://localhost:" + port + "/v1/report/bob?fromDate=2020-10-08&toDate=" + today, String.class);
+        String expectedReportJsonStart = "{\"report\":{\"2020-10-09\":{\"user\":\"bob\",\"date\":\"2020-10-09\",\"fromTime\":\"10:30:00\",\"toTime\":\"15:00:00\"},\"2020-10-11\":{\"user\":\"bob\",\"date\":\"2020-10-11\",\"fromTime\":\"07:30:00\",\"toTime\":null},\"" + today + "\":{\"user\":\"bob\",\"date\":\"" + today + "\",\"fromTime\":";
         assertThat(response, startsWith(expectedReportJsonStart));
     }
 
